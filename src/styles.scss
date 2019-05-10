@@ -1,1 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+@import "sass/_my-themes";
+
+html,
+body {
+  height: 100%;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  margin: 0;
+}
+
+// only once per project
+@include mat-core();
+
+// specify theme classes
+// include our theme with angular material mixin
+
+// light-theme is the default
+body {
+  background-color: $light-theme-background;
+  @include angular-material-theme($light-theme);
+}
+
+body.dark-theme {
+  color: $dark-theme-text-color;
+  background-color: $dark-theme-background;
+  @include angular-material-theme($dark-theme);
+}
+
+body.grayscale-theme {
+  background-color: $grayscale-theme-background;
+  @include angular-material-theme($grayscale-theme);
+}

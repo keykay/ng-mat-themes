@@ -1,0 +1,48 @@
+@import "_my-palettes";
+@import "~@angular/material/theming";
+
+// define 3 theme color
+// mat-palette accepts $palette-name, main, lighter and darker variants
+$light-theme-primary: mat-palette($myteal, 600, 300, 800);
+$light-theme-accent: mat-palette($myorange, 700, 400, 900);
+$light-theme-warn: mat-palette($myred);
+
+// create theme
+$light-theme: mat-light-theme(
+    $light-theme-primary,
+    $light-theme-accent,
+    $light-theme-warn
+);
+
+// get the default background color
+$light-theme-background: map-get($mat-light-theme-background, 'background');
+
+// dark theme
+$dark-theme-primary: mat-palette($mylimegreen);
+$dark-theme-accent: mat-palette($mypurple, 300, 200, 500);
+$dark-theme-warn: mat-palette($myred, A400, A100, A700);
+
+// use mat-dark-theme for themes with dark backgrounds
+$dark-theme: mat-dark-theme(
+    $dark-theme-primary,
+    $dark-theme-accent,
+    $dark-theme-warn
+);
+
+// get the background color
+$dark-theme-background: map-get($mat-dark-theme-background, 'background');
+$dark-theme-text-color: map-get($mat-dark-theme-foreground, 'text');
+
+// grayscale theme
+$grayscale-theme-primary: mat-palette($mygray, 600, 400, 800);
+$grayscale-theme-accent: mat-palette($mygray, A400, A100, A700);
+$grayscale-theme-warn: mat-palette($mygray, 800, 700, 900);
+
+$grayscale-theme: mat-light-theme(
+    $grayscale-theme-primary,
+    $grayscale-theme-accent,
+    $grayscale-theme-warn
+);
+
+// get the default background color
+$grayscale-theme-background: map-get($mat-light-theme-background, 'background');

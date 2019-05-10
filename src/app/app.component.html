@@ -1,20 +1,267 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div id="main-container">
+  <mat-toolbar color="primary">
+    <span>MyApp</span>
 
+    <button mat-button [matMenuTriggerFor]="animals">
+      Animal index
+    </button>
+
+    <mat-menu #animals="matMenu">
+      <button mat-menu-item [matMenuTriggerFor]="vertebrates">Vertebrates</button>
+      <button mat-menu-item [matMenuTriggerFor]="invertebrates">Invertebrates</button>
+    </mat-menu>
+
+    <mat-menu #vertebrates="matMenu">
+      <button mat-menu-item [matMenuTriggerFor]="fish">Fishes</button>
+      <button mat-menu-item [matMenuTriggerFor]="amphibians">Amphibians</button>
+      <button mat-menu-item [matMenuTriggerFor]="reptiles">Reptiles</button>
+      <button mat-menu-item>Birds</button>
+      <button mat-menu-item>Mammals</button>
+    </mat-menu>
+
+    <mat-menu #invertebrates="matMenu">
+      <button mat-menu-item>Insects</button>
+      <button mat-menu-item>Molluscs</button>
+      <button mat-menu-item>Crustaceans</button>
+      <button mat-menu-item>Corals</button>
+      <button mat-menu-item>Arachnids</button>
+      <button mat-menu-item>Velvet worms</button>
+      <button mat-menu-item>Horseshoe crabs</button>
+    </mat-menu>
+
+    <mat-menu #fish="matMenu">
+      <button mat-menu-item>Baikal oilfish</button>
+      <button mat-menu-item>Bala shark</button>
+      <button mat-menu-item>Ballan wrasse</button>
+      <button mat-menu-item>Bamboo shark</button>
+      <button mat-menu-item>Banded killifish</button>
+    </mat-menu>
+
+    <mat-menu #amphibians="matMenu">
+      <button mat-menu-item>Sonoran desert toad</button>
+      <button mat-menu-item>Western toad</button>
+      <button mat-menu-item>Arroyo toad</button>
+      <button mat-menu-item>Yosemite toad</button>
+    </mat-menu>
+
+    <mat-menu #reptiles="matMenu">
+      <button mat-menu-item>Banded Day Gecko</button>
+      <button mat-menu-item>Banded Gila Monster</button>
+      <button mat-menu-item>Black Tree Monitor</button>
+      <button mat-menu-item>Blue Spiny Lizard</button>
+      <button mat-menu-item disabled>Velociraptor</button>
+    </mat-menu>
+
+    <span class="spacer"></span>
+
+    <button mat-flat-button [matMenuTriggerFor]="menu" color="light">
+      <span>Themes</span>
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="switchThemeTo('light')">
+        <mat-icon *ngIf="(theme$ | async) === 'light'">check</mat-icon>
+        <span>Light</span>
+      </button>
+      <button mat-menu-item (click)="switchThemeTo('dark')">
+        <mat-icon *ngIf="(theme$ | async) === 'dark'">check</mat-icon>
+        <span>Dark</span>
+      </button>
+      <button mat-menu-item (click)="switchThemeTo('grayscale')">
+        <mat-icon *ngIf="(theme$ | async) === 'grayscale'">check</mat-icon>
+        <span>Grayscale</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar>
+
+
+  <mat-card>
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Shiba Inu</mat-card-title>
+      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <p>
+        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+        bred for hunting.
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-tab-group>
+    <mat-tab label="First">
+      <div class="example-container">
+        <mat-form-field>
+          <input matInput placeholder="Input">
+        </mat-form-field>
+
+        <mat-form-field>
+          <textarea matInput placeholder="Textarea"></textarea>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-select placeholder="Select">
+            <mat-option value="option">Option</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </mat-tab>
+    <mat-tab label="Second">
+      <div class="example-container">
+        <form class="example-container" [formGroup]="options">
+          <mat-checkbox formControlName="hideRequired">Hide required marker</mat-checkbox>
+          <div>
+            <label>Float label: </label>
+            <mat-radio-group formControlName="floatLabel">
+              <mat-radio-button value="auto">Auto</mat-radio-button>
+              <mat-radio-button value="always">Always</mat-radio-button>
+              <mat-radio-button value="never">Never</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </form>
+
+        <mat-form-field [hideRequiredMarker]="options.value.hideRequired" [floatLabel]="options.value.floatLabel">
+          <input matInput placeholder="Simple placeholder" required>
+        </mat-form-field>
+
+        <mat-form-field [floatLabel]="options.value.floatLabel">
+          <mat-label>Both a label and a placeholder</mat-label>
+          <input matInput placeholder="Simple placeholder">
+        </mat-form-field>
+
+        <mat-form-field [hideRequiredMarker]="options.value.hideRequired" [floatLabel]="options.value.floatLabel">
+          <mat-select required>
+            <mat-option>-- None --</mat-option>
+            <mat-option value="option">Option</mat-option>
+          </mat-select>
+          <mat-label>
+            <mat-icon>favorite</mat-icon> <b> Fancy</b> <i> label</i>
+          </mat-label>
+        </mat-form-field>
+      </div>
+    </mat-tab>
+    <mat-tab label="Third">
+      <div class="example-container">
+        <div class="btns">
+          <h3>Basic Buttons</h3>
+          <div class="example-button-row">
+            <button mat-button>Basic</button>
+            <button mat-button color="primary">Primary</button>
+            <button mat-button color="accent">Accent</button>
+            <button mat-button color="warn">Warn</button>
+            <button mat-button disabled>Disabled</button>
+            <a mat-button routerLink=".">Link</a>
+          </div>
+
+          <h3>Raised Buttons</h3>
+          <div class="example-button-row">
+            <button mat-raised-button>Basic</button>
+            <button mat-raised-button color="primary">Primary</button>
+            <button mat-raised-button color="accent">Accent</button>
+            <button mat-raised-button color="warn">Warn</button>
+            <button mat-raised-button disabled>Disabled</button>
+            <a mat-raised-button routerLink=".">Link</a>
+          </div>
+
+          <h3>Stroked Buttons</h3>
+          <div class="example-button-row">
+            <button mat-stroked-button>Basic</button>
+            <button mat-stroked-button color="primary">Primary</button>
+            <button mat-stroked-button color="accent">Accent</button>
+            <button mat-stroked-button color="warn">Warn</button>
+            <button mat-stroked-button disabled>Disabled</button>
+            <a mat-stroked-button routerLink=".">Link</a>
+          </div>
+
+          <h3>Flat Buttons</h3>
+          <div class="example-button-row">
+            <button mat-flat-button>Basic</button>
+            <button mat-flat-button color="primary">Primary</button>
+            <button mat-flat-button color="accent">Accent</button>
+            <button mat-flat-button color="warn">Warn</button>
+            <button mat-flat-button disabled>Disabled</button>
+            <a mat-flat-button routerLink=".">Link</a>
+          </div>
+
+          <h3>Icon Buttons</h3>
+          <div class="example-button-row">
+            <button mat-icon-button>
+              <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+            </button>
+            <button mat-icon-button color="primary">
+              <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+            </button>
+            <button mat-icon-button color="accent">
+              <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+            </button>
+            <button mat-icon-button color="warn">
+              <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+            </button>
+            <button mat-icon-button disabled>
+              <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+            </button>
+          </div>
+
+          <h3>Fab Buttons</h3>
+          <div class="example-button-row">
+            <button mat-fab>Basic</button>
+            <button mat-fab color="primary">Primary</button>
+            <button mat-fab color="accent">Accent</button>
+            <button mat-fab color="warn">Warn</button>
+            <button mat-fab disabled>Disabled</button>
+            <button mat-fab>
+              <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+            </button>
+            <a mat-fab routerLink=".">Link</a>
+          </div>
+
+          <h3>Mini Fab Buttons</h3>
+          <div class="example-button-row">
+            <button mat-mini-fab>Basic</button>
+            <button mat-mini-fab color="primary">Primary</button>
+            <button mat-mini-fab color="accent">Accent</button>
+            <button mat-mini-fab color="warn">Warn</button>
+            <button mat-mini-fab disabled>Disabled</button>
+            <button mat-mini-fab>
+              <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+            </button>
+            <a mat-mini-fab routerLink=".">Link</a>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Fourth">
+      <div class="example-container">
+        <mat-chip-list>
+          <mat-chip>One fish</mat-chip>
+          <mat-chip>Two fish</mat-chip>
+          <mat-chip color="primary" selected>Primary fish</mat-chip>
+          <mat-chip color="accent" selected>Accent fish</mat-chip>
+        </mat-chip-list>
+
+        <ol>
+          <li>
+            <mat-form-field>
+              <input matInput [(ngModel)]="name" placeholder="What's your name?">
+            </mat-form-field>
+          </li>
+          <li>
+            <button mat-raised-button (click)="openDialog()">Pick one</button>
+          </li>
+          <li *ngIf="animal">
+            You chose: <i>{{animal}}</i>
+          </li>
+        </ol>
+
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+
+</div>
