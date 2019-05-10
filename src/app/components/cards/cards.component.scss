@@ -1,0 +1,61 @@
+@import "~@angular/material/theming";
+
+:host {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.the-card {
+  flex: 0 0 auto;
+  width: 30vmin;
+  height: 45vmin;
+  border: 1px solid #999;
+  border-radius: 3%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: stretch;
+  align-items: stretch;
+  @include mat-elevation(8);
+
+  > .head,
+  > .upside-down-head {
+    flex: 0 0 auto;
+    padding: 8%;
+    span {
+      font-size: 5vmin;
+      padding: 5%;
+    }
+  }
+
+  > .upside-down-head {
+    transform: rotate(180deg);
+  }
+
+  > .center {
+    flex: 1;
+    padding: 5% 18%;
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+
+    > .square {
+      flex: 1;
+      border: 1px solid #aaa;
+      border-radius: 3%;
+    }
+  }
+}
+
+.switches {
+    flex: 0 0 auto;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+
+    > mat-form-field {
+        flex: 0 0 auto;
+    }
+}

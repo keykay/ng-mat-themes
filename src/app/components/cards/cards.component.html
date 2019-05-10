@@ -1,0 +1,32 @@
+<div class="the-card">
+  <div class="head">
+    <span class="number">{{cardNumber}}</span>
+    <span class="suit">{{cardSuitIcon}}</span>
+  </div>
+  <div class="center">
+    <div class="square"></div>
+  </div>
+  <div class="upside-down-head">
+    <span class="number">{{cardNumber}}</span>
+    <span class="suit">{{cardSuitIcon}}</span>
+  </div>
+</div>
+
+<div class="switches">
+  <h4>Choose card number:</h4>
+  <mat-form-field>
+    <mat-select [(ngModel)]="cardNumber">
+      <mat-option *ngFor="let n of cardNumbers" [value]="n">
+        {{n}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <h4>Choose card suit:</h4>
+  <mat-form-field>
+    <mat-select [(ngModel)]="cardSuit">
+      <mat-option *ngFor="let n of cardSuits" [value]="n">
+        {{n | uppercase}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
