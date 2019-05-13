@@ -1,14 +1,24 @@
 @import "sass/_my-themes";
+@import "app/components/cards/_cards.theme";
 
 html,
 body {
-  height: 100%;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  height: 100%;  
   margin: 0;
 }
 
 // only once per project
-@include mat-core();
+@include mat-core($app-typography);
+
+// create a mixin to apply theme to my components
+@mixin apply-theme-to-my-components($theme) {
+  @include cards-component-theme($theme);
+}
+
+// create a mixin to apply typography to my components
+@mixin apply-typography-to-my-components($config) {
+  @include cards-component-typography($config);
+}
 
 // specify theme classes
 // include our theme with angular material mixin
@@ -17,15 +27,23 @@ body {
 body {
   background-color: $light-theme-background;
   @include angular-material-theme($light-theme);
+  @include apply-theme-to-my-components($light-theme);
+  @include apply-typography-to-my-components($app-typography);
 }
 
 body.dark-theme {
   color: $dark-theme-text-color;
   background-color: $dark-theme-background;
   @include angular-material-theme($dark-theme);
+  @include apply-theme-to-my-components($dark-theme);
+  @include apply-typography-to-my-components($app-typography);
 }
 
 body.grayscale-theme {
   background-color: $grayscale-theme-background;
   @include angular-material-theme($grayscale-theme);
+  @include apply-theme-to-my-components($grayscale-theme);
+  // Override typography for all Angular Material, including mat-base-typography and all components.
+  @include angular-material-typography($grayscale-typography);
+  @include apply-typography-to-my-components($grayscale-typography);
 }

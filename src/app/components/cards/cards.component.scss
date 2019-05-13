@@ -11,7 +11,8 @@
   flex: 0 0 auto;
   width: 30vmin;
   height: 45vmin;
-  border: 1px solid #999;
+  border-width: 1px;
+  border-style: solid;
   border-radius: 3%;
   display: flex;
   flex-flow: column nowrap;
@@ -25,6 +26,7 @@
     padding: 8%;
     span {
       font-size: 5vmin;
+      line-height: 5vmin;
       padding: 5%;
     }
   }
@@ -42,8 +44,17 @@
 
     > .square {
       flex: 1;
-      border: 1px solid #aaa;
+      border-width: 1px;
+      border-style: solid;
       border-radius: 3%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      > .the-j,
+      > .the-suit {
+        flex: 0 0 auto;
+      }
     }
   }
 }
@@ -54,6 +65,7 @@
     flex-flow: column nowrap;
     justify-content: flex-start;
     align-items: center;
+    margin-top: 2em;
 
     > mat-form-field {
         flex: 0 0 auto;

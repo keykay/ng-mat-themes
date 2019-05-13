@@ -1,18 +1,23 @@
-<div class="the-card">
+<h1 class="mat-h1">The Card!</h1>
+
+<div class="the-card mat-typography">
   <div class="head">
     <span class="number">{{cardNumber}}</span>
-    <span class="suit">{{cardSuitIcon}}</span>
+    <span class="suit" *ngIf="cardNumber !== 'Joker'">{{cardSuitIcon}}</span>
   </div>
   <div class="center">
-    <div class="square"></div>
+    <div class="square">
+      <span class="the-j" *ngIf="cardNumber === 'Joker'">J</span>
+      <span class="the-suit" *ngIf="cardNumber !== 'Joker'">{{cardSuitIcon}}</span>
+    </div>
   </div>
   <div class="upside-down-head">
     <span class="number">{{cardNumber}}</span>
-    <span class="suit">{{cardSuitIcon}}</span>
+    <span class="suit" *ngIf="cardNumber !== 'Joker'">{{cardSuitIcon}}</span>
   </div>
 </div>
 
-<div class="switches">
+<div class="switches mat-typography">
   <h4>Choose card number:</h4>
   <mat-form-field>
     <mat-select [(ngModel)]="cardNumber">
@@ -21,12 +26,14 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <h4>Choose card suit:</h4>
-  <mat-form-field>
-    <mat-select [(ngModel)]="cardSuit">
-      <mat-option *ngFor="let n of cardSuits" [value]="n">
-        {{n | uppercase}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+  <ng-container *ngIf="cardNumber !== 'Joker'">
+    <h4>Choose card suit:</h4>
+    <mat-form-field>
+      <mat-select [(ngModel)]="cardSuit">
+        <mat-option *ngFor="let n of cardSuits" [value]="n">
+          {{n | uppercase}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </ng-container>
 </div>

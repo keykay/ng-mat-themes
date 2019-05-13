@@ -21,17 +21,17 @@ export class CardsComponent implements OnInit {
   ];
 
   cardNumbers = [
-    '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'
+    'A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'Joker'
   ];
 
-  cardNumber: '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | 'J' | 'Q' | 'K';
+  cardNumber: 'A' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | 'J' | 'Q' | 'K' | 'Joker';
   cardSuit: 'clubs' | 'diamonds' | 'hearts' | 'spades';
 
   get cardSuitIcon() {
     return this.suits[this.cardSuit];
   }
   constructor() {
-    this.cardNumber = '1';
+    this.cardNumber = 'A';
     this.cardSuit = 'clubs';
   }
 

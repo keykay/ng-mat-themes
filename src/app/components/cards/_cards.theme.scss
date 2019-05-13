@@ -1,0 +1,41 @@
+@mixin cards-component-theme($theme) {
+  $primary: map-get($theme, 'primary');
+  $accent: map-get($theme, 'accent');
+  $background: map-get($theme, 'background');
+
+  .the-card {
+    border-color: mat-color($primary);
+    @if (lightness(mat-color($background, 'background')) > 50) {
+        background-color: transparentize(scale-color($color: mat-color($primary, lighter), $lightness: 60%, $saturation: -80%), .5);
+    } @else {
+        background-color: scale-color($color: mat-color($primary, darker), $lightness: -60%, $saturation: -80%);
+    }
+
+    > .head,
+    > .upside-down-head {
+      > span {
+        color: mat-color($accent);
+      }
+    }
+
+    > .center > .square {
+        border-color: mat-color($accent);
+
+        .the-j,
+        .the-suit {
+          color: mat-color($primary);
+        }
+    }
+  }
+}
+
+@mixin cards-component-typography($config) {
+  .the-card > .center > .square {
+    > .the-suit {
+      @include mat-typography-level-to-styles($config, 'display-3');
+    }
+    > .the-j {
+      @include mat-typography-level-to-styles($config, 'display-4');
+    }
+  }
+}
